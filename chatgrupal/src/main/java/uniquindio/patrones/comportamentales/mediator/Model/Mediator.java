@@ -5,3 +5,4 @@ public interface Mediator {
     public void enviarMensaje(String mensaje, Usuario usuario);
     
 }
+

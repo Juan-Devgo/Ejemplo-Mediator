@@ -5,16 +5,17 @@ public abstract class Usuario {
 
     public Usuario(String nombre, String codigo) {
         assert nombre != null && !nombre.isBlank();
-        assert codigo != null && !nombre.isBlank();
+        assert codigo != null && !codigo.isBlank();
+
+        this.nombre = nombre;
+        this.codigo = codigo;
     }
     
     public abstract void enviarMensajeGlobal(String mensaje);
-    public abstract void enviarMensajePrivado(String mensaje, Usuario usuario);
-    
-    // adaptar metodo a javafx por fis 
-    public void recibirMensaje(String mensaje){
-        System.out.println();
-    }
+    public abstract void enviarMensajePrivado(String mensaje, Usuario usuarioReceptor);
+    public abstract void recibirMensaje(String mensaje);
+    public abstract String mostrarConversacionPantalla();
+
 
     //Getters
     public String getCodigo() {
