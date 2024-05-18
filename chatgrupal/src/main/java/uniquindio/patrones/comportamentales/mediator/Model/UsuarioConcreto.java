@@ -22,7 +22,7 @@ public class UsuarioConcreto extends Usuario {
     @Override
     public void enviarMensajePrivado(String mensaje, Usuario usuario) {
         assert mensaje != null;
-        mensaje = getNombre() + ":\n" + mensaje;
+        mensaje = "De " + getNombre() + " a " + usuario.getNombre() + ":\n" + mensaje;
         conversacion += "\n" + mensaje;
         mediator.enviarMensaje(mensaje, usuario);
     }

@@ -50,6 +50,7 @@ public class PrincipalController {
         this.mediator = App.mediator;
         obtenerUsuarioLoggeado();
         mostrarUsuarioLoggeado();
+        mostrarConversacionPantalla();
     }
 
     @FXML
@@ -75,16 +76,18 @@ public class PrincipalController {
 
         if(receptor.isBlank()){
             usuarioLoggeado.enviarMensajeGlobal(mensaje);
+            txReceptores.setPromptText("Global");
         }else{
             if (buscarUsuario(receptor)){
                 Usuario destinatario = mediator.buscarUsuario(receptor).get();
                 usuarioLoggeado.enviarMensajePrivado(mensaje, destinatario);
-
+                txReceptores.setPromptText("Global");
             }else{
-                consola.setText("El usuario no se encontró.");
+                txReceptores.setPromptText("El usuario no se encontró.");
+                txReceptores.setText("");
             }
         }
-        consola.setText(usuarioLoggeado.mostrarConversacionPantalla());
+        mostrarConversacionPantalla();
         txMensaje.setText("");
     }
 
@@ -95,5 +98,9 @@ public class PrincipalController {
     private boolean buscarUsuario(String nombre) {
         Optional<Usuario> usuarioEncontrado = mediator.buscarUsuario(nombre);
         return usuarioEncontrado.isPresent();      
+    }
+
+    private void mostrarConversacionPantalla() {
+        consola.setText(usuarioLoggeado.mostrarConversacionPantalla());
     }
 }

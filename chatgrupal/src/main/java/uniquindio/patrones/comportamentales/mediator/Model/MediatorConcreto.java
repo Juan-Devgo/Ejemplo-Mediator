@@ -46,7 +46,7 @@ public class MediatorConcreto implements Mediator{
     public Optional<Usuario> buscarUsuario(String nombre){
        Optional<Usuario> usuarioEncontrado = Optional.empty();
         for (Usuario usuario : usuarios){
-            if (usuario.getNombre() == nombre){
+            if (usuario.getNombre().equals(nombre)){
                 usuarioEncontrado = Optional.of(usuario);
             }
         }

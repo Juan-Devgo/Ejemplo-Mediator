@@ -50,7 +50,6 @@ public class AgregarUsuarioController {
         if (!buscarUsuario(nombreUsuario)){
             Usuario usuario = crearUsuario(nombreUsuario, codigoUsuario, mediator);
             mediator.agregarUsuario(usuario);
-            System.out.println(mediator.getUsuarios().isEmpty());
             App.setRoot("principal");
         }else{
             consola.setText("El usuario ya existe.");
